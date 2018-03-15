@@ -22,7 +22,7 @@
       </div>
     </slot>
 
-    <div class="v-step__arrow" :class="{ 'v-step__arrow--dark': step.header && step.header.title }"></div>
+    <div v-if="!hideArrow" class="v-step__arrow" :class="{ 'v-step__arrow--dark': step.header && step.header.title }"></div>
   </div>
 </template>
 
@@ -51,6 +51,10 @@ export default {
     },
     isLast: {
       type: Boolean
+    },
+    hideArrow: {
+      type: Boolean,
+      default: false
     }
   },
   data () {

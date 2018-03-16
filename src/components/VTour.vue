@@ -103,7 +103,10 @@ export default {
       // Wait for the DOM to be loaded, then start the tour
       setTimeout(() => {
         this.customCallbacks.onStart()
-        this.currentStep = 0
+        this.currentStep = Math.min(
+          0 || this.customOptions.initialStep,
+          this.numberOfSteps - 1
+        )
       }, this.customOptions.startTimeout)
     },
     previousStep () {

@@ -30,6 +30,7 @@
 import Popper from 'popper.js'
 import sum from 'hash-sum'
 import { DEFAULT_STEP_OPTIONS } from '../shared/constants'
+import VueScrollTo from 'vue-scrollto'
 
 export default {
   name: 'v-step',
@@ -55,6 +56,10 @@ export default {
     hideArrow: {
       type: Boolean,
       default: false
+    },
+    offset: {
+      type: Number,
+      default: 0
     }
   },
   data () {
@@ -77,7 +82,7 @@ export default {
     // console.log('[Vue Tour] The target element ' + this.step.target + ' of .v-step[id="' + this.hash + '"] is:', targetElement)
 
     if (targetElement) {
-      targetElement.scrollIntoView({behavior: 'smooth'})
+      VueScrollTo.scrollTo(targetElement, 200, { offset: this.offset })
 
       /* eslint-disable no-new */
       new Popper(
